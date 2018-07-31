@@ -52,15 +52,7 @@ int main(int argc, const char * argv[]) {
             
             NSRange range = [inputString rangeOfCharacterFromSet:set]; // take character set, then search said input for any matching chars
             
-            //For puntuation removal method
-            // Create character set with specified characters
-            NSMutableCharacterSet *characterSet =
-            [NSMutableCharacterSet characterSetWithCharactersInString:@"!@#$%^&*+=|,.()-"];
-            // Build array of components using specified characters as separtors
-            NSArray *arrayOfComponents = [inputString componentsSeparatedByCharactersInSet:characterSet];
             
-            // Create string from the array components
-            NSString *filterOutput = [arrayOfComponents componentsJoinedByString:@""];
             
             
             switch (userChoice) {
@@ -115,7 +107,19 @@ int main(int argc, const char * argv[]) {
                     break;
                 case 8:
                     //Punctuation removal
+                    {
+                    //For puntuation removal method
+                    // Create character set with specified characters
+                    NSMutableCharacterSet *characterSet =
+                    [NSMutableCharacterSet characterSetWithCharactersInString:@"!@#$%^&*+=|,.()-"];
+                    // Build array of components using specified characters as separtors
+                    NSArray *arrayOfComponents = [inputString componentsSeparatedByCharactersInSet:characterSet];
+                    
+                    // Create string from the array components
+                    NSString *filterOutput = [arrayOfComponents componentsJoinedByString:@""];
                     NSLog(@"Punctuation removal : %@", filterOutput);
+                    }
+                    
                     
                 default:
                     break;
