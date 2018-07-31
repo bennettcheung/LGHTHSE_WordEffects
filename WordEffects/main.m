@@ -44,14 +44,7 @@ int main(int argc, const char * argv[]) {
             // print out memory address used
             //NSLog(@"Memory Address was: %p", &inputString);
             
-            char lastCharacter = inputChars[strlen(inputChars)-1];
-            
-            NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"]; // make a set of chars
-            
-            set = [set invertedSet]; // now invert that set to have anything BUT numbers
-            
-            NSRange range = [inputString rangeOfCharacterFromSet:set]; // take character set, then search said input for any matching chars
-            
+
             
             
             
@@ -68,14 +61,23 @@ int main(int argc, const char * argv[]) {
                     
                 case 3:
                     // Numberize
+                    {
+                        NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"]; // make a set of chars
+                        
+                        set = [set invertedSet]; // now invert that set to have anything BUT numbers
+                        
+                        NSRange range = [inputString rangeOfCharacterFromSet:set]; // take character set, then search said input for any matching chars
+                        
+                        
                     
-                    if (range.location != NSNotFound) // if any chars match anything from INVERTED set, then "true", so hence "non numeric chars"
-                    {
-                        NSLog(@"String contains other non-numeric characters");
-                    }
-                    else
-                    {
-                        NSLog(@"Numberize: %d", [inputString intValue]);
+                        if (range.location != NSNotFound) // if any chars match anything from INVERTED set, then "true", so hence "non numeric chars"
+                        {
+                            NSLog(@"String contains other non-numeric characters");
+                        }
+                        else
+                        {
+                            NSLog(@"Numberize: %d", [inputString intValue]);
+                        }
                     }
                     break;
                
@@ -86,14 +88,19 @@ int main(int argc, const char * argv[]) {
                     break;
                     
                 case 5:
-                    // Respond
-                    if (lastCharacter == '?')
                     {
-                        NSLog(@"I don't know");
-                    }
-                    else if (lastCharacter == '!')
-                    {
-                        NSLog(@"Whoa, calm down!");
+                        char lastCharacter = inputChars[strlen(inputChars)-1];
+                        
+              
+                        // Respond
+                        if (lastCharacter == '?')
+                        {
+                            NSLog(@"I don't know");
+                        }
+                        else if (lastCharacter == '!')
+                        {
+                            NSLog(@"Whoa, calm down!");
+                        }
                     }
                     break;
                     
